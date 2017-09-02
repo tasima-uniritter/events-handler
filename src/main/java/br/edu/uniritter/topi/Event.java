@@ -1,7 +1,17 @@
 package br.edu.uniritter.topi;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+@XmlRootElement
+@EqualsAndHashCode @ToString
+@Getter
+@Setter
 public class Event {
     private String name;
     private Date date;
@@ -12,10 +22,6 @@ public class Event {
 
     public Date getDate() {
         return date;
-    }
-
-    public void save() {
-
     }
 
     public Event setDate(Date date) {
