@@ -1,11 +1,11 @@
 package br.edu.uniritter.topi;
 
+import br.edu.uniritter.topi.entities.Event;
 import br.edu.uniritter.topi.exceptions.ValidateDateException;
 import br.edu.uniritter.topi.exceptions.ValidateDateIsMandatoryException;
 import br.edu.uniritter.topi.exceptions.ValidateNameHaveALimitCharactersException;
 import br.edu.uniritter.topi.exceptions.ValidateNameIsMandatoryException;
 
-import java.util.Calendar;
 import java.util.Date;
 
 public class Validator {
