@@ -17,7 +17,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity(name = "events")
 public class Event {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,5 +27,4 @@ public class Event {
 
     @NotNull
     private Date date;
-
 }
