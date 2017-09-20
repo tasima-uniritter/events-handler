@@ -28,7 +28,7 @@ public class EventTest {
 
     @Test
     public void shouldReturnAnErrorWhenNameIsNull() {
-        Event event = new Event("", new Date());
+        Event event = new Event();
 
         Set<ConstraintViolation<Event>> constraintViolations = validator.validate(event);
 

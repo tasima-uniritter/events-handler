@@ -1,4 +1,4 @@
-package br.edu.uniritter.topi;
+package br.edu.uniritter.topi.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
