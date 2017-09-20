@@ -16,7 +16,7 @@ import java.util.Calendar;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "events")
-public class Event {
+public class EventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

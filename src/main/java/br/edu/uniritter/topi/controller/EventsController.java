@@ -1,25 +1,25 @@
 package br.edu.uniritter.topi.controller;
 
-import br.edu.uniritter.topi.entity.Event;
+import br.edu.uniritter.topi.entity.EventEntity;
 import br.edu.uniritter.topi.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController("/events")
-@ResponseBody
+@RestController()
+@RequestMapping("/events")
 public class EventsController {
     @Autowired
     private EventRepository eventRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    Iterable<Event> index() {
+    @GetMapping
+    Iterable<EventEntity> index() {
         return eventRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    Event store(@Valid @RequestBody Event event) {
+    @PostMapping
+    EventEntity store(@Valid @RequestBody EventEntity event) {
         return eventRepository.save(event);
     }
 }
