@@ -1,6 +1,6 @@
 package br.edu.uniritter.topi;
 
-import br.edu.uniritter.topi.entity.Event;
+import br.edu.uniritter.topi.entity.EventEntity;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -10,7 +10,6 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import java.util.Date;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -28,9 +27,9 @@ public class EventTest {
 
     @Test
     public void shouldReturnAnErrorWhenNameIsNull() {
-        Event event = new Event();
+        EventEntity event = new EventEntity();
 
-        Set<ConstraintViolation<Event>> constraintViolations = validator.validate(event);
+        Set<ConstraintViolation<EventEntity>> constraintViolations = validator.validate(event);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("may not be null", constraintViolations.iterator().next().getMessage());
