@@ -1,6 +1,6 @@
 package br.edu.uniritter.topi.repository;
 
-import br.edu.uniritter.topi.entity.TicketEntity;
+import br.edu.uniritter.topi.entity.ticket.TicketEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

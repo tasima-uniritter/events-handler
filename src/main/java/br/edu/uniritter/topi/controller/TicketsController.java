@@ -1,6 +1,6 @@
 package br.edu.uniritter.topi.controller;
 
-import br.edu.uniritter.topi.entity.TicketEntity;
+import br.edu.uniritter.topi.entity.ticket.TicketEntity;
 import br.edu.uniritter.topi.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

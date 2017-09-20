@@ -1,4 +1,4 @@
-package br.edu.uniritter.topi.entity;
+package br.edu.uniritter.topi.entity.ticket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "tickets")
-public class TicketEntity {
+public class TicketEntity implements TicketInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
