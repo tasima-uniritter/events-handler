@@ -1,5 +1,6 @@
 package br.edu.uniritter.topi.controller;
 
+import br.edu.uniritter.topi.dto.EventWithSalesPeriodsDTO;
 import br.edu.uniritter.topi.entity.event.EventEntity;
 import br.edu.uniritter.topi.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class EventsController {
     }
 
     @PostMapping
-    EventEntity store(@Valid @RequestBody EventEntity event) {
-        return eventService.save(event);
+    EventWithSalesPeriodsDTO store(@Valid @RequestBody EventWithSalesPeriodsDTO eventWithSalesPeriods) {
+        return eventService.save(eventWithSalesPeriods);
     }
 }

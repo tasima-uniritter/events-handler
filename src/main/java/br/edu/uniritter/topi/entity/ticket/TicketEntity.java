@@ -21,7 +21,6 @@ public class TicketEntity implements TicketInterface {
     private Long id;
 
     @NotNull(message = "O nome não pode ser nulo.")
-    @Size(max = 150, message = "O nome permite no máximo 150 caracteres.")
     private String name;
 
     @NotNull(message = "O valor não pode ser nulo.")
