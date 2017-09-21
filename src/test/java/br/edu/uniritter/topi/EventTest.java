@@ -1,6 +1,6 @@
 package br.edu.uniritter.topi;
 
-import br.edu.uniritter.topi.entity.EventEntity;
+import br.edu.uniritter.topi.entity.event.EventEntity;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;

@@ -1,6 +1,6 @@
 package br.edu.uniritter.topi.controller;
 
-import br.edu.uniritter.topi.dto.ApiError;
+import br.edu.uniritter.topi.dto.ApiErrorDTO;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @ControllerAdvice
 public class ExceptionHandlingController {
-    private ApiError parseErrors(List<ObjectError> errors, HttpStatus status, String message) {
+    private ApiErrorDTO parseErrors(List<ObjectError> errors, HttpStatus status, String message) {
         List<String> parsedErrors = new ArrayList<String>();
 
         for (ObjectError error : errors) {
@@ -25,13 +25,13 @@ public class ExceptionHandlingController {
             parsedErrors.add(name + ": " + error.getDefaultMessage());
         }
 
-        return new ApiError(HttpStatus.BAD_REQUEST, "Validation error", parsedErrors);
+        return new ApiErrorDTO(HttpStatus.BAD_REQUEST, "Validation error", parsedErrors);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public @ResponseBody ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
-        ApiError apiError = parseErrors(ex.getBindingResult().getAllErrors(), HttpStatus.BAD_REQUEST, "Validation Error");
+        ApiErrorDTO apiError = parseErrors(ex.getBindingResult().getAllErrors(), HttpStatus.BAD_REQUEST, "Validation Error");
 
         return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
     }

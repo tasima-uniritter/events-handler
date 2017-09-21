@@ -1,4 +1,4 @@
-package br.edu.uniritter.topi.entity;
+package br.edu.uniritter.topi.entity.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
