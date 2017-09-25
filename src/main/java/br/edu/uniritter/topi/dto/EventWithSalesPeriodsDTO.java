@@ -17,6 +17,6 @@ public class EventWithSalesPeriodsDTO {
 
     @NotNull
     @Valid
-    @Size(min = 1)
+    @Size(min = 1, message = "Deve conter pelo menos 1 periodo de vendas")
     private List<SalesPeriodEntity> salesPeriods;
 }
