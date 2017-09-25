@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class EventService {
@@ -21,25 +23,18 @@ public class EventService {
     private SalesPeriodRepository salesPeriodRepository;
 
     public List<EventWithSalesPeriodsDTO> all() {
-        Iterable<EventEntity> events = eventRepository.findAll();
-        ArrayList<EventWithSalesPeriodsDTO> eventsWithSalesPeriods = new ArrayList<EventWithSalesPeriodsDTO>();
+        List<EventEntity> events = (List<EventEntity>) eventRepository.findAll();
 
-        events.forEach(event -> {
+        return events.stream().map(event -> {
             List<SalesPeriodEntity> salesPeriods = salesPeriodRepository.findByEvent(event.getId());
-            EventWithSalesPeriodsDTO eventWithSalesPeriods = new EventWithSalesPeriodsDTO(event, salesPeriods);
-            eventsWithSalesPeriods.add(eventWithSalesPeriods);
-        });
-
-        return eventsWithSalesPeriods;
+            return new EventWithSalesPeriodsDTO(event, salesPeriods);
+        }).collect(Collectors.toList());
     }
 
     public EventWithSalesPeriodsDTO save(EventWithSalesPeriodsDTO event) {
-        EventEntity eventEntity;
-        eventEntity = eventRepository.save(event.getEvent());
+        EventEntity eventEntity = eventRepository.save(event.getEvent());
 
-        List<SalesPeriodEntity> salesPeriods = event.getSalesPeriods();
-
-        salesPeriods.forEach(salesPeriodEntity -> {
+        event.getSalesPeriods().forEach(salesPeriodEntity -> {
             salesPeriodEntity.setEvent(eventEntity.getId());
             salesPeriodRepository.save(salesPeriodEntity);
         });
