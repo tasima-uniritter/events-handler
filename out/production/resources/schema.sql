@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 
 CREATE TABLE IF NOT EXISTS `sales_periods` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
-    `ticket` varchar(150) NOT NULL,
+    `ticket` bigint(20) NOT NULL,
+    `event` bigint(20) NOT NULL,
     `starts_at` date NOT NULL,
     `ends_at` date NOT NULL,
     PRIMARY KEY (`id`)
@@ -22,8 +23,8 @@ CREATE TABLE IF NOT EXISTS `sales_periods` (
 
 CREATE TABLE IF NOT EXISTS `orders` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT,
-    `userType` varchar(150) NOT NULL,
-    `ticketType` varchar(150) NOT NULL,
+    `user_type` varchar(150) NOT NULL,
+    `ticket` bigint(20) NOT NULL,
     `amount` decimal(6,2) NOT NULL,
     PRIMARY KEY (`id`)
 );

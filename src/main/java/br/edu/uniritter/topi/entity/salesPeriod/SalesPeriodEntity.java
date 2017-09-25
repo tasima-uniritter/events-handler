@@ -25,6 +25,8 @@ public class SalesPeriodEntity {
     @NotNull(message = "O id do ticket não pode ser nulo.")
     private Long ticket;
 
+    private Long event;
+
     @Column(name = "starts_at")
     @NotNull(message = "A data de início não pode ser nula.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")

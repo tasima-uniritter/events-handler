@@ -15,7 +15,7 @@ public class EventsController {
     private EventService eventService;
 
     @GetMapping
-    Iterable<EventEntity> index() {
+    Iterable<EventWithSalesPeriodsDTO> index() {
         return eventService.all();
     }
 
