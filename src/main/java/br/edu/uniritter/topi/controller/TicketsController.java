@@ -19,9 +19,7 @@ public class TicketsController {
 
     @GetMapping(value = "/{name}/price/{userType}")
     Double priceWithDiscounts(@PathVariable("name") String name, @PathVariable("userType") String userType) {
-        TicketEntity ticket = ticketService.findByName(name);
-
-        return ticketService.applyDiscount(UserType.valueOf(userType.toUpperCase()), ticket).getPrice();
+        return ticketService.findByName(name, UserType.valueOf(userType.toUpperCase())).getPrice();
     }
 
     @GetMapping(value = "{name}/price")
