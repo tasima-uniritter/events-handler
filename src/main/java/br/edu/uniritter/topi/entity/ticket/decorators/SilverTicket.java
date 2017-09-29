@@ -11,6 +11,6 @@ public class SilverTicket implements TicketInterface {
 
     @Override
     public Double getPrice() {
-        return ticket.getPrice() * 0.6;
+        return ticket.getPrice() - (ticket.getPrice() * 0.6);
     }
 }

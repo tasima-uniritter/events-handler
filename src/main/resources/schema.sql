@@ -20,11 +20,3 @@ CREATE TABLE IF NOT EXISTS `sales_periods` (
     `ends_at` date NOT NULL,
     PRIMARY KEY (`id`)
 );
-
-CREATE TABLE IF NOT EXISTS `orders` (
-    `id` bigint(20) NOT NULL AUTO_INCREMENT,
-    `user_type` varchar(150) NOT NULL,
-    `ticket` bigint(20) NOT NULL,
-    `amount` decimal(6,2) NOT NULL,
-    PRIMARY KEY (`id`)
-);

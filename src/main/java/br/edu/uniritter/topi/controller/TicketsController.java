@@ -1,11 +1,10 @@
 package br.edu.uniritter.topi.controller;
 
+import br.edu.uniritter.topi.config.UserType;
 import br.edu.uniritter.topi.entity.ticket.TicketEntity;
 import br.edu.uniritter.topi.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/tickets")
@@ -16,5 +15,17 @@ public class TicketsController {
     @GetMapping
     Iterable<TicketEntity> index() {
         return ticketService.all();
+    }
+
+    @GetMapping(value = "/{name}/price/{userType}")
+    Double priceWithDiscounts(@PathVariable("name") String name, @PathVariable("userType") String userType) {
+        TicketEntity ticket = ticketService.findByName(name);
+
+        return ticketService.applyDiscount(UserType.valueOf(userType.toUpperCase()), ticket).getPrice();
+    }
+
+    @GetMapping(value = "{name}/price")
+    Double price(@PathVariable("name") String name) {
+        return ticketService.findByName(name).getPrice();
     }
 }

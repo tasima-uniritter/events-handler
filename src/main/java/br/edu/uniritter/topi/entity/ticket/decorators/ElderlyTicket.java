@@ -11,6 +11,6 @@ public class ElderlyTicket implements TicketInterface {
 
     @Override
     public Double getPrice() {
-        return ticket.getPrice() * 0.5;
+        return ticket.getPrice() - (ticket.getPrice() * 0.5);
     }
 }

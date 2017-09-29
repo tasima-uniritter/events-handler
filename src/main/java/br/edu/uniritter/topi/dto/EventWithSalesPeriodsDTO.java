@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -23,4 +25,19 @@ public class EventWithSalesPeriodsDTO {
     @Valid
     @Size(min = 1, message = "Deve conter pelo menos 1 periodo de vendas.")
     private List<SalesPeriodEntity> salesPeriods;
+
+    @AssertFalse(message = "Deve conter apenas 1 ingresso por tipo.")
+    private boolean isSalesPeriods() {
+        boolean hasRepeatedTicket = false;
+
+        for (int i = 0; i < salesPeriods.size(); i++) {
+            for (int j = i + 1; j < salesPeriods.size(); j++) {
+                if (salesPeriods.get(i).getTicket().equals(salesPeriods.get(j).getTicket())) {
+                    hasRepeatedTicket = true;
+                }
+            }
+        }
+
+        return hasRepeatedTicket;
+    }
 }

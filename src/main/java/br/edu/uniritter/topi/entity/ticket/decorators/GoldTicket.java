@@ -11,6 +11,6 @@ public class GoldTicket implements TicketInterface {
 
     @Override
     public Double getPrice() {
-        return ticket.getPrice() * 0.75;
+        return ticket.getPrice() - (ticket.getPrice() * 0.75);
     }
 }
