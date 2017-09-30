@@ -5,5 +5,10 @@ jdk:
 before_install:
   - chmod +x gradlew
 
+addons:
+  sonarcloud:
+    organization: "tasima-uniritter"
+
 script:
-  - ./gradlew check
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
