@@ -7,7 +7,7 @@ before_install:
 
 addons:
   sonarcloud:
-    organization: "tasima-uniritter"
+    organization: "tasima-uniritter-github"
 
 script:
   # other script steps might be done before running the actual analysis
