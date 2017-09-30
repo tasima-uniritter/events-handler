@@ -1,0 +1,14 @@
+language: java
+jdk:
+  - oraclejdk8
+
+before_install:
+  - chmod +x gradlew
+
+addons:
+  sonarcloud:
+    organization: "tasima-uniritter"
+
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner

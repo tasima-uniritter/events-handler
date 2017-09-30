@@ -20,28 +20,28 @@ public class TicketService {
         return ticketRepository.findAll();
     }
 
-    public TicketEntity findByName(String name) {
+    public TicketInterface findByName(String name) {
         return ticketRepository.findByName(name);
     }
 
-    public TicketInterface applyDiscount(UserType type, TicketEntity ticket) {
-        TicketInterface ticketWithDiscount = ticket;
+    public TicketInterface findByName(String name, UserType userType) {
+        TicketInterface ticketWithDiscount = this.findByName(name);
 
-        switch (type) {
+        switch (userType) {
             case STUDANT: {
-                ticketWithDiscount = new StudantTicket(ticket);
+                ticketWithDiscount = new StudantTicket(ticketWithDiscount);
                 break;
             }
             case ELDERLY: {
-                ticketWithDiscount =  new ElderlyTicket(ticket);
+                ticketWithDiscount =  new ElderlyTicket(ticketWithDiscount);
                 break;
             }
             case GOLD: {
-                ticketWithDiscount =  new GoldTicket(ticket);
+                ticketWithDiscount =  new GoldTicket(ticketWithDiscount);
                 break;
             }
             case SILVER: {
-                ticketWithDiscount =  new SilverTicket(ticket);
+                ticketWithDiscount =  new SilverTicket(ticketWithDiscount);
                 break;
             }
         }
